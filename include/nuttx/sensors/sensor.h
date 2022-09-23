@@ -585,6 +585,15 @@ struct sensor_cap           /* Type: Capacitance */
   int32_t rawdata[4];       /* in SI units pF */
 };
 
+struct sensor_adc         /* Type: Accerometer */
+{
+  uint64_t timestamp;       /* Units is microseconds */
+  float adc0;               /* ADC0 measurements     */
+  float adc1;               /* ADC1 measurements     */
+  float adc2;               /* ADC2 measurements     */
+  float temperature;        /* Temperature in degrees celsius */
+};
+
 /* The sensor lower half driver interface */
 
 struct sensor_lowerhalf_s;
