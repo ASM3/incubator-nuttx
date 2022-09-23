@@ -62,7 +62,7 @@
 
 /* The number of ADC channels in the conversion list */
 
-#define ADC1_NCHANNELS 1
+#define ADC1_NCHANNELS 2////1
 #define ADC2_NCHANNELS 3
 #define ADC3_NCHANNELS 2
 
@@ -78,7 +78,9 @@
 #ifdef CONFIG_STM32L4_ADC1
 static const uint8_t  g_chanlist_adc1[ADC1_NCHANNELS] =
 {
-  3
+  ////3
+  3, 6 //// Adding channels 3 and 6
+
 };
 
 /* Configurations of pins used by each ADC channels
@@ -92,7 +94,8 @@ static const uint8_t  g_chanlist_adc1[ADC1_NCHANNELS] =
 
 static const uint32_t g_pinlist_adc1[ADC1_NCHANNELS] =
 {
-  GPIO_ADC1_IN3
+  ////GPIO_ADC1_IN3
+  GPIO_ADC1_IN3, GPIO_ADC1_IN6 //// Adding channels 3 and 6
 };
 #endif
 
