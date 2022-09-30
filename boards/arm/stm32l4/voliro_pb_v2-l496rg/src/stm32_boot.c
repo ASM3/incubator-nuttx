@@ -30,6 +30,7 @@
 #include <arch/board/board.h>
 
 #include "arm_internal.h"
+#include "voliro_pb_v2.h"
 
 /****************************************************************************
  * Public Functions

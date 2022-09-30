@@ -28,7 +28,7 @@
 #include <debug.h>
 #include <syslog.h>
 
-#include "nucleo-144.h"
+#include "voliro_pb_v2.h"
 #include <nuttx/fs/fs.h>
 #include <nuttx/leds/userled.h>
 

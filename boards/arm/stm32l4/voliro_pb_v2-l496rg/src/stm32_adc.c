@@ -34,7 +34,7 @@
 #include "chip.h"
 #include "stm32l4_gpio.h"
 #include "stm32l4_adc.h"
-#include "nucleo-144.h"
+#include "voliro_pb_v2.h"
 
 #ifdef CONFIG_ADC
 

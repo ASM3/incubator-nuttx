@@ -1,5 +1,5 @@
 /****************************************************************************
- * boards/arm/stm32l4/nucleo-l496zg/src/nucleo-144.h
+ * boards/arm/stm32l4/voliro_pb_v2-l496rg/src/voliro_pb_v2.h
  *
  * Licensed to the Apache Software Foundation (ASF) under one or more
  * contributor license agreements.  See the NOTICE file distributed with
@@ -18,8 +18,8 @@
  *
  ****************************************************************************/
 
-#ifndef __BOARDS_ARM_STM32L4_NUCLEO_L496ZG_SRC_NUCLEO_144_H
-#define __BOARDS_ARM_STM32L4_NUCLEO_L496ZG_SRC_NUCLEO_144_H
+#ifndef __BOARDS_ARM_STM32L4_VOLIRO_PB_V2_L496RG_SRC_VOLIRO_PB_V2_H
+#define __BOARDS_ARM_STM32L4_VOLIRO_PB_V2_L496RG_SRC_VOLIRO_PB_V2_H
 
 /****************************************************************************
  * Included Files
@@ -48,25 +48,39 @@
 #  endif
 #endif
 
-/* Nucleo-144 GPIO Pin Definitions ******************************************/
+/* Voliro_pb_v2 GPIO Pin Definitions ******************************************/
 
 /* LED
  *
- * The Nucleo-144 board has numerous LEDs but only three, LD1 a Green LED,
- * LD2 a Blue LED and LD3 a Red LED, that can be controlled by software.
- * The following definitions assume the default Solder Bridges are installed.
+ * The Voliro_PB_V2 board has numerous LEDs.
+ * The for the Nuttx RTOS controls the (CONFIG_ARCH_LEDS needs to be defined):
+ * GPIO_LED_STAT_4 (Green LED)
+ * GPIO_LED_STAT_1 (Blue LED)
+ * GPIO_LED_ERR_2 (Red LED)
+ * The other LEDs can be user controlled
+ * The following definitions are used to access individual LEDs.
  */
 
-#define GPIO_LD1       (GPIO_OUTPUT | GPIO_PUSHPULL | GPIO_SPEED_50MHz | GPIO_OUTPUT_CLEAR | \
-                        GPIO_PORTC | GPIO_PIN7)
-#define GPIO_LD2       (GPIO_OUTPUT | GPIO_PUSHPULL | GPIO_SPEED_50MHz | GPIO_OUTPUT_CLEAR | \
-                        GPIO_PORTB | GPIO_PIN7)
-#define GPIO_LD3       (GPIO_OUTPUT | GPIO_PUSHPULL | GPIO_SPEED_50MHz | GPIO_OUTPUT_CLEAR | \
-                        GPIO_PORTB | GPIO_PIN14)
+#define GPIO_LED_STAT_1 (GPIO_OUTPUT | GPIO_PUSHPULL | GPIO_SPEED_50MHz | GPIO_OUTPUT_SET | \
+						GPIO_PORTC | GPIO_PIN6)
+#define GPIO_LED_STAT_2 (GPIO_OUTPUT | GPIO_PUSHPULL | GPIO_SPEED_50MHz | GPIO_OUTPUT_SET | \
+						GPIO_PORTC | GPIO_PIN7)
+#define GPIO_LED_STAT_3 (GPIO_OUTPUT | GPIO_PUSHPULL | GPIO_SPEED_50MHz | GPIO_OUTPUT_SET | \
+						GPIO_PORTC | GPIO_PIN8)
+#define GPIO_LED_STAT_4 (GPIO_OUTPUT | GPIO_PUSHPULL | GPIO_SPEED_50MHz | GPIO_OUTPUT_SET | \
+						GPIO_PORTC | GPIO_PIN9)
+#define GPIO_LED_ERR_1 (GPIO_OUTPUT | GPIO_PUSHPULL | GPIO_SPEED_50MHz | GPIO_OUTPUT_SET | \
+						GPIO_PORTC | GPIO_PIN4)
+#define GPIO_LED_ERR_2 (GPIO_OUTPUT | GPIO_PUSHPULL | GPIO_SPEED_50MHz | GPIO_OUTPUT_SET | \
+						GPIO_PORTC | GPIO_PIN5)
 
-#define GPIO_LED_GREEN GPIO_LD1
-#define GPIO_LED_BLUE  GPIO_LD2
-#define GPIO_LED_RED   GPIO_LD3
+#define GPIO_LED_GREEN GPIO_LED_STAT_4
+#define GPIO_LED_BLUE  GPIO_LED_STAT_1
+#define GPIO_LED_RED   GPIO_LED_ERR_2
+
+#define GPIO_LED_RED_12V  GPIO_LED_ERR_1
+#define GPIO_LED_BLUE_COM GPIO_LED_STAT_2
+#define GPIO_LED_BLUE_SMP GPIO_LED_STAT_3
 
 #define LED_DRIVER_PATH "/dev/userleds"
 
@@ -165,7 +179,7 @@
  * Name: stm32_spidev_initialize
  *
  * Description:
- *   Called to configure SPI chip select GPIO pins for the Nucleo-144 board.
+ *   Called to configure SPI chip select GPIO pins for the Voliro_pb_v2 board.
  *
  ****************************************************************************/
 
@@ -221,7 +235,7 @@ int stm32_sdio_initialize(void);
  *
  * Description:
  *   Called from stm32_usbinitialize very early in inialization to setup
- *   USB-related GPIO pins for the nucleo-144 board.
+ *   USB-related GPIO pins for the voliro_pb_v2 board.
  *
  ****************************************************************************/
 
@@ -266,4 +280,4 @@ int stm32_dfsdm_setup(void);
 #endif
 
 #endif /* __ASSEMBLY__ */
-#endif /* __BOARDS_ARM_STM32L4_NUCLEO_L496ZG_SRC_NUCLEO_144_H */
+#endif /* __BOARDS_ARM_STM32L4_VOLIRO_PB_V2_L496RG_SRC_VOLIRO_PB_V2_H */

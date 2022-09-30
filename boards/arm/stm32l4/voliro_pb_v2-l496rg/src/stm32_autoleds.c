@@ -31,6 +31,7 @@
 #include <arch/board/board.h>
 
 #include "stm32l4_gpio.h"
+#include "voliro_pb_v2.h"
 #ifdef CONFIG_ARCH_LEDS
 
 /****************************************************************************
