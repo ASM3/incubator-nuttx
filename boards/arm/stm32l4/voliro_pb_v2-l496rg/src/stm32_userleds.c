@@ -31,7 +31,6 @@
 #include <arch/board/board.h>
 
 #include "stm32l4_gpio.h"
-#include "nucleo-144.h"
 
 #ifndef CONFIG_ARCH_LEDS
 

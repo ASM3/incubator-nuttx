@@ -30,7 +30,6 @@
 #include <arch/board/board.h>
 
 #include "arm_internal.h"
-#include "nucleo-144.h"
 
 /****************************************************************************
  * Public Functions

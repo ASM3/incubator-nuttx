@@ -483,31 +483,63 @@
 
 /* LED definitions **********************************************************/
 
-/* The Nucleo-144 board has numerous LEDs but only three, LD1 a Green LED,
- * LD2 a Blue LED and LD3 a Red LED, that can be controlled by software.
- * The following definitions assume the default Solder Bridges are installed.
- *
- * If CONFIG_ARCH_LEDS is not defined, then the user can control the LEDs
- * in any way.
+/* The Voliro_PB_V2 board has numerous LEDs.
+ * The for the Nuttx RTOS controls the (CONFIG_ARCH_LEDS needs to be defined):
+ * GPIO_LED_STAT_4 (Green LED)
+ * GPIO_LED_STAT_1 (Blue LED)
+ * GPIO_LED_ERR_2 (Red LED)
+ * The other LEDs can be user controlled
  * The following definitions are used to access individual LEDs.
  */
+
+#define GPIO_LED_STAT_1 (GPIO_OUTPUT | GPIO_PUSHPULL | GPIO_SPEED_50MHz | GPIO_OUTPUT_SET | \
+						GPIO_PORTC | GPIO_PIN6)
+#define GPIO_LED_STAT_2 (GPIO_OUTPUT | GPIO_PUSHPULL | GPIO_SPEED_50MHz | GPIO_OUTPUT_SET | \
+						GPIO_PORTC | GPIO_PIN7)
+#define GPIO_LED_STAT_3 (GPIO_OUTPUT | GPIO_PUSHPULL | GPIO_SPEED_50MHz | GPIO_OUTPUT_SET | \
+						GPIO_PORTC | GPIO_PIN8)
+#define GPIO_LED_STAT_4 (GPIO_OUTPUT | GPIO_PUSHPULL | GPIO_SPEED_50MHz | GPIO_OUTPUT_SET | \
+						GPIO_PORTC | GPIO_PIN9)
+#define GPIO_LED_ERR_1 (GPIO_OUTPUT | GPIO_PUSHPULL | GPIO_SPEED_50MHz | GPIO_OUTPUT_SET | \
+						GPIO_PORTC | GPIO_PIN4)
+#define GPIO_LED_ERR_2 (GPIO_OUTPUT | GPIO_PUSHPULL | GPIO_SPEED_50MHz | GPIO_OUTPUT_SET | \
+						GPIO_PORTC | GPIO_PIN5)
+
+#define GPIO_LED_GREEN GPIO_LED_STAT_4
+#define GPIO_LED_BLUE  GPIO_LED_STAT_1
+#define GPIO_LED_RED   GPIO_LED_ERR_2
+
+#define GPIO_LED_RED_12V  GPIO_LED_ERR_1
+#define GPIO_LED_BLUE_COM GPIO_LED_STAT_2
+#define GPIO_LED_BLUE_SMP GPIO_LED_STAT_3
+
+#define LED_DRIVER_PATH "/dev/userleds"
 
 /* LED index values for use with board_userled() */
 
 #define BOARD_LED1        0
 #define BOARD_LED2        1
 #define BOARD_LED3        2
-#define BOARD_NLEDS       3
+#define BOARD_LED4        3
+#define BOARD_LED5        4
+#define BOARD_LED6        5
+#define BOARD_NLEDS       6
 
 #define BOARD_LED_GREEN   BOARD_LED1
 #define BOARD_LED_BLUE    BOARD_LED2
 #define BOARD_LED_RED     BOARD_LED3
+#define GPIO_LED_RED_12V  BOARD_LED4
+#define GPIO_LED_BLUE_COM BOARD_LED5
+#define GPIO_LED_BLUE_SMP BOARD_LED6
 
 /* LED bits for use with board_userled_all() */
 
 #define BOARD_LED1_BIT    (1 << BOARD_LED1)
 #define BOARD_LED2_BIT    (1 << BOARD_LED2)
 #define BOARD_LED3_BIT    (1 << BOARD_LED3)
+#define BOARD_LED4_BIT    (1 << BOARD_LED4)
+#define BOARD_LED5_BIT    (1 << BOARD_LED5)
+#define BOARD_LED6_BIT    (1 << BOARD_LED6)
 
 /* If CONFIG_ARCH_LEDS is defined, the usage by the board port is defined in
  * include/board.h and src/stm32_autoleds.c. The LEDs are used to encode

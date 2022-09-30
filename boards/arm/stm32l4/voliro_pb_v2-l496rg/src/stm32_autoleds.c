@@ -31,7 +31,6 @@
 #include <arch/board/board.h>
 
 #include "stm32l4_gpio.h"
-#include "nucleo-144.h"
 #ifdef CONFIG_ARCH_LEDS
 
 /****************************************************************************
@@ -87,10 +86,10 @@ void board_autoled_initialize(void)
 }
 
 /****************************************************************************
- * Name: board_autoled_on
+ * Name: board_autoled_off (reversed for the Voliro_PB_V2 on -> off)
  ****************************************************************************/
 
-void board_autoled_on(int led)
+void board_autoled_off(int led)
 {
   switch (led)
     {
@@ -136,10 +135,10 @@ void board_autoled_on(int led)
 }
 
 /****************************************************************************
- * Name: board_autoled_off
+ * Name: board_autoled_on (reversed for the Voliro_PB_V2 off-> on)
  ****************************************************************************/
 
-void board_autoled_off(int led)
+void board_autoled_on(int led)
 {
   switch (led)
     {
